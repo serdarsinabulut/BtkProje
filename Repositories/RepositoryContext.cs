@@ -1,10 +1,8 @@
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using Entities.Models;
-
-namespace StoreApp.Models
+namespace Repositories;
+public class RepositoryContext : DbContext
 {
-    public class RepositoryContext : DbContext
-    {
         public DbSet<Product> Products { get; set; }  // Burada parantez eksikti
 
         public RepositoryContext(DbContextOptions<RepositoryContext> options)
@@ -25,5 +23,4 @@ namespace StoreApp.Models
                 new Product() { ProductID = 5, ProductName = "Deck", Price = 1_500 }
             );
         }
-    }
 }

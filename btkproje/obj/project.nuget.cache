@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Aw1NFR/w3EQ=",
+  "dgSpecHash": "NA44WqnQr74=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aspire\\Desktop\\btkproje\\StoreApp\\StoreApp.csproj",
+  "projectFilePath": "C:\\Users\\Aspire\\Desktop\\BTK\\BtkProje\\btkproje\\StoreApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aspire\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Aspire\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",
