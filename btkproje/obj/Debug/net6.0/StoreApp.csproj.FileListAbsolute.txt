@@ -176,3 +176,5 @@ C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\refint\StoreApp.d
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\StoreApp.pdb
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\StoreApp.genruntimeconfig.cache
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\ref\StoreApp.dll
+C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\Services.dll
+C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\Services.pdb
