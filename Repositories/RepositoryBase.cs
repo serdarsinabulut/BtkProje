@@ -24,6 +24,11 @@ namespace Repositories
             _context = context;
         }
 
+        public void Create(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
         public IQueryable<T> FindAll(bool trackChanges)
         {
             return trackChanges
@@ -73,6 +78,11 @@ namespace Repositories
                 ✔ .SingleOrDefault() → Tek bir kayıt döndürür (Eğer veri yoksa null döndürür).
                 ✔ EF Core, bu nesneyi takip eder.*/
                 : _context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault();
+        }
+
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity);
         }
     }
 }

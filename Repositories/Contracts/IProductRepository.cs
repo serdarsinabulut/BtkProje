@@ -14,5 +14,8 @@ namespace Repositories.Contracts
         /*Bu metot, belirli bir ürünü ID ile getirir.
         Product? → null dönebilir (eğer ID'ye sahip ürün yoksa).
         id parametresi: Hangi ürünün getirileceğini belirtir.*/
+
+        void CreateProduct(Product product);
+        void DeleteOneProduct(Product product);
     }
 }

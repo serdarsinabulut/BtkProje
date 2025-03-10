@@ -21,5 +21,8 @@ namespace Repositories.Contracts
         Expression<Func<T,bool>> ile LINQ sorgularında kullanılabilecek dinamik koşullar yazılabilir.
         örneğin
         var product = _productRepository.FindByCondition(p => p.Id == 10, false);*/
+
+        void Create(T entity);
+        void Remove(T entity);
     }
 }

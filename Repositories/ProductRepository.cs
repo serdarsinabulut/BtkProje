@@ -1,4 +1,5 @@
 using Entities.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Repositories.Contracts;
 
 namespace Repositories
@@ -8,6 +9,10 @@ namespace Repositories
         public ProductRepository(RepositoryContext context) : base(context)
         {
         }
+
+        public void CreateProduct(Product product) => Create(product);
+
+        public void DeleteOneProduct(Product product) => Remove(product);
 
         public IQueryable<Product>/*-->Bu, bir Product koleksiyonunu (liste) temsil eder.*/ GetAllProducts(bool trackChanges) => FindAll(trackChanges);
         
