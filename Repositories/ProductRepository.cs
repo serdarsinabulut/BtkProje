@@ -24,7 +24,8 @@ namespace Repositories
             Parametreler:
             id → Aranacak ürünün kimliği (ID).
             trackChanges → EF Core’un değişiklikleri takip edip etmeyeceğini belirler.*/  
-        }    
-        
+        }
+
+        public void UpdateOneProduct(Product entity) => Update(entity);
     }
 }

@@ -84,5 +84,10 @@ namespace Repositories
         {
             _context.Set<T>().Remove(entity);
         }
+
+        public void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
+        }
     }
 }
