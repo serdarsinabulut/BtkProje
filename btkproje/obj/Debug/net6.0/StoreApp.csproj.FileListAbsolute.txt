@@ -178,3 +178,5 @@ C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\StoreApp.genrunti
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\obj\Debug\net6.0\ref\StoreApp.dll
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\Services.dll
 C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\Services.pdb
+C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Aspire\Desktop\BTK\BtkProje\btkproje\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
