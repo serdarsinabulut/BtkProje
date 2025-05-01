@@ -1,9 +1,12 @@
+using System.Dynamic;
+
 namespace Services.Contracts
 {
     public interface IServiceManager
     {
-        IProductService ProductService{get;}
+        IProductService ProductService { get; }
 
-        ICategoryService CategoryService{get;}
+        ICategoryService CategoryService { get; }
+        IOrderService OrderService { get; }
     }
 }

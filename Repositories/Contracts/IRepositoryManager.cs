@@ -14,6 +14,7 @@ namespace Repositories.Contracts
         örneğin
         _repositoryManager.Product.GetAllProducts(false);*/
         ICategoryRepository Category {get;}
+        IOrderRepository Order {get;}
         void Save();
         /*Bu metot, veritabanındaki değişiklikleri kaydetmek için kullanılır.
         Repository deseni kullanıldığında, veritabanına yapılan değişikliklerin (Ekleme, Güncelleme, Silme) işlem sonunda Save() ile kaydedilmesi gerekir.*/

@@ -12,6 +12,7 @@ public class RepositoryContext : DbContext
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Order> Orders{get;set;}
     /*✔ DbSet<Product> → Product tablosunu temsil eder.
       ✔ DbSet<Category> → Category tablosunu temsil eder.
       ✔ EF Core, bu tanımları kullanarak SQL'de ilgili tabloları oluşturur.*/
