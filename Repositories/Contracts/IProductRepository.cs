@@ -1,9 +1,13 @@
 using Entities.Models;
+using Entities.RequestParameters;
 
 namespace Repositories.Contracts
 {   
     public interface IProductRepository : IRepositoryBase<Product>
     {
+
+        IQueryable<Product> GetShowcaseProducts(bool trackChanges);
+        IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p);
         IQueryable<Product> GetAllProducts(bool trackChanges);
         /*Bu metot, tüm ürünleri getirmek için kullanılır.
         IQueryable<Product> döndürmesi, veritabanı sorgularında LINQ kullanmayı sağlar.
