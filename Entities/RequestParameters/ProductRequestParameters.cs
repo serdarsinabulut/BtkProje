@@ -8,7 +8,15 @@ namespace Entities.RequestParameters
         public bool IsValidPrice => MaxPrice > MinPrice;
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-
        
+       public ProductRequestParameters() : this(1,6)
+        {
+            
+        }
+        public ProductRequestParameters(int pageNumber=1, int pageSize=6)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+        }
     }
 }
