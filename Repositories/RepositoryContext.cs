@@ -3,10 +3,12 @@ DbContext, veritabanı bağlantısını yönetir ve veritabanı tablolarını te
 
 using System.Reflection;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Config;
 namespace Repositories;
-public class RepositoryContext : DbContext
+public class RepositoryContext : IdentityDbContext<IdentityUser>
 /*✔ RepositoryContext sınıfı, EF Core'un DbContext sınıfından türetilmiştir.
   ✔ Bu sınıf, veritabanı bağlantısını yönetir ve tabloları tanımlar.*/
 {
