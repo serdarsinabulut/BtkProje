@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StoreApp.Migrations
 {
-    public partial class startIdentity : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,10 @@ namespace StoreApp.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,21 +27,21 @@ namespace StoreApp.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,9 +52,9 @@ namespace StoreApp.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CategoryName = table.Column<string>(type: "TEXT", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,16 +65,16 @@ namespace StoreApp.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Line1 = table.Column<string>(type: "TEXT", nullable: false),
-                    Line2 = table.Column<string>(type: "TEXT", nullable: true),
-                    Line3 = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    GiftWrap = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Shipped = table.Column<bool>(type: "INTEGER", nullable: false),
-                    OrderedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Line1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Line2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Line3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GiftWrap = table.Column<bool>(type: "bit", nullable: false),
+                    Shipped = table.Column<bool>(type: "bit", nullable: false),
+                    OrderedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,11 +85,11 @@ namespace StoreApp.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,11 +106,11 @@ namespace StoreApp.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -127,10 +127,10 @@ namespace StoreApp.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,8 +147,8 @@ namespace StoreApp.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,10 +171,10 @@ namespace StoreApp.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Value = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -191,14 +191,14 @@ namespace StoreApp.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ProductID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProductName = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Summary = table.Column<string>(type: "TEXT", nullable: true),
-                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
-                    ShowCase = table.Column<bool>(type: "INTEGER", nullable: false)
+                    ProductID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
+                    ShowCase = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,11 +214,11 @@ namespace StoreApp.Migrations
                 name: "CartLine",
                 columns: table => new
                 {
-                    CartLineId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProductID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CartLineId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -237,64 +237,40 @@ namespace StoreApp.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "CategoryId", "CategoryName" },
-                values: new object[] { 1, "Book" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "15aed7c7-9a2a-4397-ad7a-f58d14879733", "abe95575-97ee-494f-ba51-a75087d5ce03", "Editor", "EDITOR" },
+                    { "7313728a-029f-4034-be0f-e11fa5ce9d97", "6fbb55ab-c3b4-4ea8-b04f-f9d4cf621d2d", "User", "USER" },
+                    { "c9033794-d7e8-47e2-9841-caf41e0e1136", "eb6ab59c-6ff8-4a55-bee3-fe09f694a433", "Admin", "ADMIN" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "CategoryName" },
-                values: new object[] { 2, "Electronic" });
+                values: new object[,]
+                {
+                    { 1, "Book" },
+                    { 2, "Electronic" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 1, 2, "/images/5.jpg", 17000m, "Computer", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 2, 2, "/images/2.jpg", 1000m, "Keyboard", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 3, 2, "/images/1.jpg", 500m, "Mouse", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 4, 2, "/images/4.jpg", 7000m, "Mointor", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 5, 2, "/images/3.jpg", 1500m, "Headphone", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 6, 1, "/images/6.jpg", 25m, "Hamlet", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 7, 1, "/images/7.jpg", 45m, "Sherlock", false, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 8, 1, "/images/8.jpg", 1145m, "Xp-Pen", true, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 9, 2, "/images/9.jpg", 4445m, "Galaxy FE", true, "" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductID", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
-                values: new object[] { 10, 1, "/images/10.jpg", 545m, "Hp Mouse", true, "" });
+                values: new object[,]
+                {
+                    { 1, 2, "/images/5.jpg", 17000m, "Computer", false, "" },
+                    { 2, 2, "/images/2.jpg", 1000m, "Keyboard", false, "" },
+                    { 3, 2, "/images/1.jpg", 500m, "Mouse", false, "" },
+                    { 4, 2, "/images/4.jpg", 7000m, "Mointor", false, "" },
+                    { 5, 2, "/images/3.jpg", 1500m, "Headphone", false, "" },
+                    { 6, 1, "/images/6.jpg", 25m, "Hamlet", false, "" },
+                    { 7, 1, "/images/7.jpg", 45m, "Sherlock", false, "" },
+                    { 8, 1, "/images/8.jpg", 1145m, "Xp-Pen", true, "" },
+                    { 9, 2, "/images/9.jpg", 4445m, "Galaxy FE", true, "" },
+                    { 10, 1, "/images/10.jpg", 545m, "Hp Mouse", true, "" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -305,7 +281,8 @@ namespace StoreApp.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -331,7 +308,8 @@ namespace StoreApp.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartLine_OrderId",
